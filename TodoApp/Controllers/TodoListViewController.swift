@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: UITableViewController {
-
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var itemArray = [Item]()
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+   
     
     let defaults = UserDefaults.standard
     
@@ -18,23 +19,23 @@ class TodoListViewController: UITableViewController {
         super.viewDidLoad()
        
         
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        
-        let newItem = Item()
-        let newItem1 = Item()
-        let newItem2 = Item()
-        let newItem3 = Item()
-        newItem.title = "Find Mike"
-        itemArray.append(newItem)
-        
-        
-        newItem1.title = "B"
-        itemArray.append(newItem1)
-        newItem2.title = " C"
-        itemArray.append(newItem2)
-        
-        newItem3.title = "D "
-        itemArray.append(newItem3)
+//        let newItem = Item()
+//        let newItem1 = Item()
+//        let newItem2 = Item()
+//        let newItem3 = Item()
+//        newItem.title = "Find Mike"
+//        itemArray.append(newItem)
+//
+//
+//        newItem1.title = "B"
+//        itemArray.append(newItem1)
+//        newItem2.title = " C"
+//        itemArray.append(newItem2)
+//
+//        newItem3.title = "D "
+//        itemArray.append(newItem3)
         
 //        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
 //           itemArray = items
@@ -60,8 +61,12 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
        
+        
+        context.delete(itemArray[indexPath.row])
+        itemArray.remove(at: indexPath.row)
        
-        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        tableView.deleteRows(at: [indexPath], with: .left)
+       // itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         saveItems()
       
     }
@@ -72,7 +77,8 @@ class TodoListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) {(action) in
             print("Success!")
             
-            let newItem = Item()
+            let newItem = Item(  context: self.context)
+            newItem.done = false
             newItem.title = textField.text!
             self.itemArray.append(newItem)
         
@@ -97,34 +103,34 @@ class TodoListViewController: UITableViewController {
     
     func saveItems(){
         
-        let encoder = PropertyListEncoder()
+       
         
          do{
-             let data = try encoder.encode(itemArray)
-             try data.write(to: dataFilePath!)
+             try self.context.save()
          }catch{
-             print("Error while encoding the data")
+             print("Error saving context")
          }
         
         tableView.reloadData()
     }
     
     func loadItems(){
-        if let data = try? Data(contentsOf: dataFilePath!){
-            
-            let decoder = PropertyListDecoder()
-            do{
-                itemArray = try decoder.decode([Item].self, from: data)
-            }catch{
-                print("An error has occured while decoding the data")
-            }
-           
-            
+        let request :NSFetchRequest<Item> = Item.fetchRequest()
+        do{
+          itemArray =  try context.fetch(request)
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        
+        
+
+
         }
             
            
             
         
     }
-}
+
 
