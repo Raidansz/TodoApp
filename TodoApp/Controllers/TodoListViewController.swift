@@ -136,7 +136,18 @@ extension TodoListViewController:UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let request:NSFetchRequest<Item> = Item.fetchRequest()
-        print(searchBar.text!)
+       
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text ?? "")
+        request.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        
+        do{
+            itemArray =  try context.fetch(request)
+        }catch{
+            print(error.localizedDescription)
+        }
+        tableView.reloadData()
     }
     
     
