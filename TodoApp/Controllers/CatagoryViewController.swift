@@ -13,6 +13,7 @@ class CatagoryViewController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var catagoryArray = [Catagory]()
     
+   
     
     let defaults = UserDefaults.standard
     
@@ -43,16 +44,26 @@ class CatagoryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+      
         
+        performSegue(withIdentifier: "goToItems", sender: self)
+//        tableView.deselectRow(at: indexPath, animated: true)
+//
+//
+//        context.delete(catagoryArray[indexPath.row])
+//        catagoryArray.remove(at: indexPath.row)
+//
+//        tableView.deleteRows(at: [indexPath], with: .left)
+//        // itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+//        saveCatagories()
         
-        context.delete(catagoryArray[indexPath.row])
-        catagoryArray.remove(at: indexPath.row)
-        
-        tableView.deleteRows(at: [indexPath], with: .left)
-        // itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        saveCatagories()
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! TodoListViewController
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCatagory = catagoryArray[indexPath.row]
+        }
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
