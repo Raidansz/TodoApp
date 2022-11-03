@@ -37,12 +37,9 @@ class SwipeTableViewController: UITableViewController,SwipeTableViewCellDelegate
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
                // handle action by updating model with deletion
             self.updateModel(at: indexPath)
-//
-//
+
            }
 
-           // customize the action appearance
-           //deleteAction.image = UIImage(named: "delete")
 
            return [deleteAction]
     }

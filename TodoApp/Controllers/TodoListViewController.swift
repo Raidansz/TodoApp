@@ -54,7 +54,7 @@ class TodoListViewController: SwipeTableViewController {
         itemArray.remove(at: indexPath.row)
         
         tableView.deleteRows(at: [indexPath], with: .left)
-        // itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        
         saveItems()
     }
     
@@ -62,11 +62,7 @@ class TodoListViewController: SwipeTableViewController {
     
     
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//       
-//        
-//    }
-    
+
     @IBAction func addButtonPressed(_ sender: Any) {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add new Todo item", message: "", preferredStyle: .alert)

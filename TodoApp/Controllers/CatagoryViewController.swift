@@ -51,15 +51,7 @@ class CatagoryViewController: SwipeTableViewController {
       
         
         performSegue(withIdentifier: "goToItems", sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//
-//        context.delete(catagoryArray[indexPath.row])
-//        catagoryArray.remove(at: indexPath.row)
-//
-//        tableView.deleteRows(at: [indexPath], with: .left)
-//        // itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-//        saveCatagories()
+  
         
     }
     
