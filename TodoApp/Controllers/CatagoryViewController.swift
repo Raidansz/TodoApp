@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 
 
+
 class CatagoryViewController: SwipeTableViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -40,6 +41,7 @@ class CatagoryViewController: SwipeTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let catagory = catagoryArray[indexPath.row]
         cell.textLabel?.text = catagory.name
+        cell.backgroundColor = .random()
         
 
         return cell
