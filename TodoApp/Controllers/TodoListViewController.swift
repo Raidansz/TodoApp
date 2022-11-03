@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class TodoListViewController: UITableViewController {
+class TodoListViewController: SwipeTableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var itemArray = [Item]()
     
@@ -27,7 +27,7 @@ class TodoListViewController: UITableViewController {
         
         
         
-        //loadItems()
+    
         
     }
     
@@ -38,14 +38,15 @@ class TodoListViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let item = itemArray[indexPath.row]
         cell.textLabel?.text = item.title
+  
         cell.accessoryType = item.done ? .checkmark : .none
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func updateModel(at indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         
@@ -55,8 +56,16 @@ class TodoListViewController: UITableViewController {
         tableView.deleteRows(at: [indexPath], with: .left)
         // itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         saveItems()
-        
     }
+    
+    
+    
+    
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//       
+//        
+//    }
     
     @IBAction func addButtonPressed(_ sender: Any) {
         var textField = UITextField()

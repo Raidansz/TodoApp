@@ -7,9 +7,9 @@
 
 import UIKit
 import CoreData
-import SwipeCellKit
 
-class CatagoryViewController: UITableViewController {
+
+class CatagoryViewController: SwipeTableViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var catagoryArray = [Catagory]()
@@ -37,12 +37,11 @@ class CatagoryViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CatagoryCell", for: indexPath) as! SwipeTableViewCell
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let catagory = catagoryArray[indexPath.row]
         cell.textLabel?.text = catagory.name
         
-        cell.delegate = self
-       // cell.accessoryType = item.done ? .checkmark : .none
+
         return cell
     }
     
@@ -123,32 +122,13 @@ class CatagoryViewController: UITableViewController {
         
     }
     
-    
-
-}
-//Swipe cell delegate methods
-extension CatagoryViewController:SwipeTableViewCellDelegate{
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-               // handle action by updating model with deletion
-            
-            self.context.delete(self.catagoryArray[indexPath.row])
-               self.catagoryArray.remove(at: indexPath.row)
-
-            tableView.deleteRows(at: [indexPath], with: .none)
-                      
-            self.saveCatagories()
-           }
-
-           // customize the action appearance
-           //deleteAction.image = UIImage(named: "delete")
-
-           return [deleteAction]
+    override func updateModel(at indexPath: IndexPath) {
+        self.context.delete(self.catagoryArray[indexPath.row])
+                      self.catagoryArray.remove(at: indexPath.row)
+       
+                   tableView.deleteRows(at: [indexPath], with: .none)
+       
+                   self.saveCatagories()
     }
-    
-  
-    
+
 }
