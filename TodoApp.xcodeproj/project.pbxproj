@@ -15,7 +15,6 @@
 		AA294E90290B31FA00359BF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA294E8F290B31FA00359BF8 /* Assets.xcassets */; };
 		AA294E93290B31FA00359BF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA294E91290B31FA00359BF8 /* LaunchScreen.storyboard */; };
 		AA3CDE8B290F3D7E002A7373 /* CatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CDE8A290F3D7E002A7373 /* CatagoryViewController.swift */; };
-		AAFF47D129130A770067D2A6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF47D029130A770067D2A6 /* Data.swift */; };
 		AAFF47D4291331920067D2A6 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = AAFF47D3291331920067D2A6 /* SwipeCellKit */; };
 		AAFF47D6291430270067D2A6 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF47D5291430260067D2A6 /* SwipeTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,6 @@
 		AA294E92290B31FA00359BF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA294E94290B31FA00359BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA3CDE8A290F3D7E002A7373 /* CatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatagoryViewController.swift; sourceTree = "<group>"; };
-		AAFF47D029130A770067D2A6 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		AAFF47D5291430260067D2A6 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				AA294E8C290B31F800359BF8 /* TodoApp.xcdatamodeld */,
-				AAFF47D029130A770067D2A6 /* Data.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,7 +188,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3CDE8B290F3D7E002A7373 /* CatagoryViewController.swift in Sources */,
-				AAFF47D129130A770067D2A6 /* Data.swift in Sources */,
 				AA294E88290B31F800359BF8 /* TodoListViewController.swift in Sources */,
 				AAFF47D6291430270067D2A6 /* SwipeTableViewController.swift in Sources */,
 				AA294E84290B31F800359BF8 /* AppDelegate.swift in Sources */,

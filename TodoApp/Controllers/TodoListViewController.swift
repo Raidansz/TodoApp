@@ -25,7 +25,7 @@ class TodoListViewController: SwipeTableViewController {
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        
+        navigationItem.title = selectedCatagory?.name
         
     
         
