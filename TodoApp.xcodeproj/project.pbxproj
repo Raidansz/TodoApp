@@ -17,6 +17,8 @@
 		AA3CDE8B290F3D7E002A7373 /* CatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CDE8A290F3D7E002A7373 /* CatagoryViewController.swift */; };
 		AA3F8DA22911AF4B00E3062A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AA3F8DA12911AF4B00E3062A /* Realm */; };
 		AA3F8DA42911AF4B00E3062A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA3F8DA32911AF4B00E3062A /* RealmSwift */; };
+		AAFF47D129130A770067D2A6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF47D029130A770067D2A6 /* Data.swift */; };
+		AAFF47D4291331920067D2A6 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = AAFF47D3291331920067D2A6 /* SwipeCellKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,7 @@
 		AA294E92290B31FA00359BF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA294E94290B31FA00359BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA3CDE8A290F3D7E002A7373 /* CatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatagoryViewController.swift; sourceTree = "<group>"; };
+		AAFF47D029130A770067D2A6 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3F8DA42911AF4B00E3062A /* RealmSwift in Frameworks */,
+				AAFF47D4291331920067D2A6 /* SwipeCellKit in Frameworks */,
 				AA3F8DA22911AF4B00E3062A /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				AA294E8C290B31F800359BF8 /* TodoApp.xcdatamodeld */,
+				AAFF47D029130A770067D2A6 /* Data.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 			packageProductDependencies = (
 				AA3F8DA12911AF4B00E3062A /* Realm */,
 				AA3F8DA32911AF4B00E3062A /* RealmSwift */,
+				AAFF47D3291331920067D2A6 /* SwipeCellKit */,
 			);
 			productName = TodoApp;
 			productReference = AA294E80290B31F800359BF8 /* TodoApp.app */;
@@ -159,6 +165,7 @@
 			mainGroup = AA294E77290B31F800359BF8;
 			packageReferences = (
 				AA3F8DA02911AF4B00E3062A /* XCRemoteSwiftPackageReference "realm-swift" */,
+				AAFF47D2291331920067D2A6 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = AA294E81290B31F800359BF8 /* Products */;
 			projectDirPath = "";
@@ -188,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3CDE8B290F3D7E002A7373 /* CatagoryViewController.swift in Sources */,
+				AAFF47D129130A770067D2A6 /* Data.swift in Sources */,
 				AA294E88290B31F800359BF8 /* TodoListViewController.swift in Sources */,
 				AA294E84290B31F800359BF8 /* AppDelegate.swift in Sources */,
 				AA294E86290B31F800359BF8 /* SceneDelegate.swift in Sources */,
@@ -419,6 +427,14 @@
 				minimumVersion = 10.32.1;
 			};
 		};
+		AAFF47D2291331920067D2A6 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -431,6 +447,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA3F8DA02911AF4B00E3062A /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		AAFF47D3291331920067D2A6 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAFF47D2291331920067D2A6 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
